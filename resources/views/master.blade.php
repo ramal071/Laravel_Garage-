@@ -21,7 +21,8 @@
 </head>
 <body>
     {{-- header eka connect karanawa  --}}
-    {{View::make('header')}}
+    {{-- {{View::make('header')}} --}}
+    @include('header')
     @yield('content')
     {{--        {{View::make('footer')}}     --}}
 
@@ -71,7 +72,7 @@
     </style>
 
 
-    {{-- localhost says popup  --}}
+    {{-- localhost says popup 
         <script>
     $(document).ready(function()
     {
@@ -81,5 +82,5 @@
         })
     })
     </script> 
-    
+     --}}
 </html>

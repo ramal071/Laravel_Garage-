@@ -1,5 +1,7 @@
 <?php
-
+//use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController; // add path
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,3 +21,7 @@
 Route::get('/', function () {
     return view('login');
 });
+
+Route::post("/header", [UserController::class, 'login']);
+
+Route::get("/header", [ProductController::class, 'index']);
