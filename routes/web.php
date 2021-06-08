@@ -1,7 +1,7 @@
 <?php
 //use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController; // add path
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserAuthController; // add path
+use App\Http\Controllers\ServiceController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,15 +13,16 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('login');
-// });
-
-
 Route::get('/', function () {
-    return view('login');
+    return view('auth.login');
 });
+//     login
+Route::get('login', [UserAuthController::class, 'login'])->middleware('AlreadyLoggedIn');
+Route::get('register', [UserAuthController::class, 'register'])->middleware('AlreadyLoggedIn');
+Route::post('create', [UserAuthController::class, 'create'])->name('auth.create');
+Route::post('check', [UserAuthController::class, 'check'])->name('auth.check'); 
+Route::get('home', [UserAuthController::class, 'profile'])->middleware('isLogged');
+Route::get('logout', [UserAuthController::class, 'logout']);
 
-Route::post("/header", [UserController::class, 'login']);
 
-Route::get("/header", [ProductController::class, 'index']);
+

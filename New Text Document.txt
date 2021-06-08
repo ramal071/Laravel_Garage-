@@ -1,0 +1,32 @@
+https://github.com/ramal071/Laravel_Garage-.git
+
+1. php artisan make:migration create_users_table
+
+seeder = database ekata data manual add karanne seeder eken
+php artisan make:seeder UserSeeder
+php artisan db:seed --class UserSeeder === data DB ekata add kala
+
+2. username, password DB ekath ekka check karanna. UserControler.php
+User.php =>>  'password', 2. ui eka password ek penne na
+
+php artisan make:middleware UserAuth =  login unama aye login page ekata yanna ba.
+kernel->> \App\Http\Middleware\UserAuth::class,
+&    \Illuminate\Session\Middleware\StartSession::class, -> session start
+
+middleware  ===    userAuth.php
+if($request->path()=="login" && $request->session()->has('user'))
+      {
+          return redirect('/service');  eka parak login unama aye login page ekata yanna ba
+      }
+      return $next($request);
+
+login eken load wenne service.balde eka. controller eka ServiceController
+
+3. Service tika
+
+php artisan make:controller ServiceController
+php artisan make:migration create_services_table
+ php artisan migrate
+php artisan make:seeder ServiceSeeder
+php artisan db:seed --class ServiceSeeder == add services manually
+php artisan make:model Service

@@ -15,12 +15,11 @@ class UserAuth
      */
     public function handle($request, Closure $next)
     {
-      //  return $next($request);
-      
-      if($request->path()=="login" && $request->session()->has('user'))
-      {
-          return redirect('/header');
-      }
-      return $next($request);
+      // // localhost:8000 user log unama aye mulata ynna ba. 
+      // if($request->path()=="/" && $request->session()->has('user'))
+      // {
+      //     return redirect('/service');
+      // }
+      return $next($request);  // already 
     }
 }
